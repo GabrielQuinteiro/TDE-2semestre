@@ -1,12 +1,4 @@
 #include "quickSortExt.h"
-#ifdef __unix__
-#include <stdlib.h>
-#include <unistd.h>
-
-#elif defined(_WIN32) || defined(WIN32)
-#define OS_Windows
-#include <windows.h>
-#endif
 
 #define MAX_L 100
 #define TAMAREA 15
