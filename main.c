@@ -1,4 +1,12 @@
 #include "quickSortExt.h"
+#ifdef __unix__
+#include <stdlib.h>
+#include <unistd.h>
+
+#elif defined(_WIN32) || defined(WIN32)
+#define OS_Windows
+#include <windows.h>
+#endif
 
 #define MAX_L 100
 #define TAMAREA 15
@@ -42,11 +50,21 @@ int main()
         printf("| %-24s | %-23s | %-76s | %-28s | %-18d |\n", b.drs, b.municipio, b.US, b.nomeMedida, b.valoresMedida);
     }
    printf("=========================================================================================================================================================================================\n");
+    #ifdef OS_Windows
     system("pause");
+    #else
+    system("echo 'Pressione enter para continuar...'; read dummy;");
+    #endif
+    
     int opcao;
     do
     {
+        #ifdef OS_Windows
         system("cls");
+        #else
+        system("clear");
+        #endif
+        
         printf("=======================================================\n");
         printf("|                 Escolha uma opcao                   |\n");
         printf("|=====================================================|\n");
@@ -60,7 +78,12 @@ int main()
 
         if(opcao == 1)
         {
+            #ifdef OS_Windows
             system("cls");
+            #else
+            system("clear");
+            #endif
+            
             quickSortExterno(temp, 0, tamArq, TAMAREA, sizeof(Base), comparaDecrescente);
             li = 0;
             printf("=========================================================================================================================================================================================\n");
@@ -73,11 +96,20 @@ int main()
                 printf("| %-24s | %-23s | %-76s | %-28s | %-18d |\n", b.drs, b.municipio, b.US, b.nomeMedida, b.valoresMedida);
             }
                 printf("=========================================================================================================================================================================================\n");
+                #ifdef OS_Windows
                 system("pause");
+                #else
+                system("echo 'Pressione enter para continuar...'; read dummy;");
+                #endif
         }
         else if(opcao == 2)
         {
+            #ifdef OS_Windows
             system("cls");
+            #else
+            system("clear");
+            #endif
+            
             quickSortExterno(temp, 0, tamArq, TAMAREA, sizeof(Base), comparaCrescente);
             li = 0;
             printf("=========================================================================================================================================================================================\n");
@@ -90,20 +122,39 @@ int main()
                 printf("| %-24s | %-23s | %-76s | %-28s | %-18d |\n", b.drs, b.municipio, b.US, b.nomeMedida, b.valoresMedida);
             }
             printf("=========================================================================================================================================================================================\n");
+            #ifdef OS_Windows
             system("pause");
+            #else
+            system("echo 'Pressione enter para continuar...'; read dummy;");
+            #endif
         }
         else if(opcao == 0)
         {
+            #ifdef OS_Windows
             system("cls");
+            #else
+            system("clear");
+            #endif
+            
             printf("=======================================================\n");
             printf("|                  Fim do Programa!                   |\n");
             printf("=======================================================\n");
         }
         else
         {
+            #ifdef OS_Windows
             system("cls");
+            #else
+            system("clear");
+            #endif
+            
             printf("\nInsira um valor valido!\n");
+            #ifdef OS_Windows
             system("pause");
+            #else
+            system("echo 'Pressione enter para continuar...'; read dummy;");
+            #endif
+}
         }
     }while(opcao != 0);
 
@@ -225,7 +276,7 @@ void geraArquivo(FILE *arq, FILE *temp, int nElem)
     while(fgets(buffer, BUFFER, arq) != NULL)
     {
         lCount++;
-        if(lCount == 1) /* descarta cabeçalho */
+        if(lCount == 1) /* descarta cabeÃ§alho */
         {
             continue;
         }
