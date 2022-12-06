@@ -1,6 +1,15 @@
 #ifndef _H_QUICKSORTEXT
 #define _H_QUICKSORTEXT
 
+#ifdef __unix__
+#include <stdlib.h>
+#include <unistd.h>
+
+#elif defined(_WIN32) || defined(WIN32)
+#define OS_Windows
+#include <windows.h>
+#endif
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <inttypes.h>
