@@ -146,7 +146,7 @@ int main()
             #else
             system("echo 'Pressione enter para continuar...'; read dummy;");
             #endif
-}
+
         }
     }while(opcao != 0);
 
